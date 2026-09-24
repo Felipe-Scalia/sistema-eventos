@@ -1,6 +1,8 @@
 from sala import Sala
 from evento import EventoShow, FilmeCinema, EventoEsportivo
 from ingresso import IngressoInteira, IngressoMeia, IngressoVip
+from cliente import Cliente
+from venda import Venda
 
 sala_show = Sala("Arena Principal", 5, 10)
 sala_cinema = Sala("Sala de Cinema", 4, 8)
@@ -68,7 +70,21 @@ vip = IngressoVip(
 )
 
 ingressos = [inteira, meia, vip]
-
 for ingresso in ingressos:
     print(ingresso.emitir_comprovante())
     print()
+cliente = Cliente(
+    "Felipe",
+    "123.456.789-00",
+    "felipe@email.com")
+
+venda = Venda(1, cliente)
+venda.adicionar_ingresso(inteira)
+venda.adicionar_ingresso(meia)
+venda.adicionar_ingresso(vip)
+print(venda.exibir_recibo())
+print("A1 antes:", assento1.status)
+venda.confirmar_pagamento()
+print("A1 depois:", assento1.status)
+print()
+print(venda.exibir_recibo())

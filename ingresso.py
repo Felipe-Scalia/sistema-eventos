@@ -7,6 +7,9 @@ class Ingresso(ABC):
         self._codigo_ingresso = codigo_ingresso
         self._evento = evento
         self._assento = assento
+
+    def ocupar_assento(self):
+        self._assento.ocupar()
     
     def emitir_comprovante(self):
         return (
