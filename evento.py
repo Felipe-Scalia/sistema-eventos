@@ -14,14 +14,14 @@ class Evento(ABC):
     def preco_basico(self):
         return self.__preco_basico
 
+    @property
+    def titulo(self):
+        return self.__titulo
+
     @abstractmethod
     def obter_detalhes(self):
         pass
-
-    @abstractmethod
-    def calcular_preco_final(self):
-        pass
-
+    
 class EventoShow(Evento):
     def __init__(self, id_evento, titulo, data_hora, preco_basico, sala,
                  artista_banda, genero_artistico, possui_intervalo):
@@ -35,9 +35,6 @@ class EventoShow(Evento):
     def obter_detalhes(self):
         return f"Artista/Banda: {self.__artista_banda}, Gênero: {self.__genero_artistico}, Possui intervalo: {self.__possui_intervalo}"
 
-    def calcular_preco_final(self):
-        return self.preco_basico
-
 class FilmeCinema(Evento):
     def __init__(self, id_evento, titulo, data_hora, preco_basico, sala,
                  duracao_min, classificacao_indicativa, formato):
@@ -50,10 +47,7 @@ class FilmeCinema(Evento):
 
     def obter_detalhes(self):
         return f"Duração: {self.__duracao_min} min, Classificação: {self.__classificacao_indicativa}, Formato: {self.__formato}"
-
-    def calcular_preco_final(self):
-        return self.preco_basico
-
+    
 class EventoEsportivo(Evento):
     def __init__(self, id_evento, titulo, data_hora, preco_basico, sala,
                  modalidade, participantes, categoria):
@@ -66,6 +60,4 @@ class EventoEsportivo(Evento):
 
     def obter_detalhes(self):
         return f"Modalidade: {self.__modalidade}, Participantes: {self.__participantes}, Categoria: {self.__categoria}"
-
-    def calcular_preco_final(self):
-        return self.preco_basico
+    
